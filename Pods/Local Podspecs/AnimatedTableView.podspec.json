@@ -1,0 +1,31 @@
+{
+  "name": "AnimatedTableView",
+  "version": "1.0.0",
+  "summary": "AnimatedTableView is a drop-in subclass of UITableView that lets you add custom animations to any UITableView.",
+  "homepage": "https://github.com/suxinde2009/AnimatedTableView",
+  "license": "MIT",
+  "authors": {
+    "suxinde2009": "suxinde2009@126.com"
+  },
+  "source": {
+    "git": "https://github.com/suxinde2009/AnimatedTableView.git",
+    "tag": "1.0.0"
+  },
+  "swift_versions": "4.0",
+  "platforms": {
+    "ios": "9.0"
+  },
+  "source_files": [
+    "AnimatedTableView/**/*.h",
+    "AnimatedTableView/**/*.{h,m,swift}"
+  ],
+  "public_header_files": [
+    "AnimatedTableView/**/*.h",
+    "AnimatedTableView/**/*.h"
+  ],
+  "frameworks": [
+    "UIKit",
+    "Foundation"
+  ],
+  "swift_version": "4.0"
+}
