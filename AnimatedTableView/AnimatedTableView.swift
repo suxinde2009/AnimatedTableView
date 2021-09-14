@@ -11,181 +11,6 @@ import UIKit
 import CoreGraphics
 
 
-@objc public protocol AnimatedTableViewDataSource {
-    
-    func tableView(_ tableView: AnimatedTableView,
-                   numberOfRowsInSection section: Int) -> Int
-    
-    func tableView(_ tableView: AnimatedTableView,
-                   cellForRowAt indexPath: IndexPath) -> UITableViewCell
-    
-    
-    @objc
-    optional func numberOfSections(in tableView: AnimatedTableView) -> Int // Default is 1 if not implemented
-    
-    
-    @objc
-    optional func tableView(_ tableView: AnimatedTableView,
-                            titleForHeaderInSection section: Int) -> String? // fixed font style. use custom view (UILabel) if you want something different
-    
-    @objc
-    optional func tableView(_ tableView: AnimatedTableView,
-                            titleForFooterInSection section: Int) -> String?
-    
-    @objc
-    optional func tableView(_ tableView: AnimatedTableView,
-                            canEditRowAt indexPath: IndexPath) -> Bool
-    
-    
-    @objc
-    optional func tableView(_ tableView: AnimatedTableView,
-                            canMoveRowAt indexPath: IndexPath) -> Bool
-    
-    
-    // Index
-    
-    @objc
-    optional func sectionIndexTitles(for tableView: AnimatedTableView) -> [String]? // return list of section titles to display in section index view (e.g. "ABCD...Z#")
-    
-    @objc
-    optional func tableView(_ tableView: AnimatedTableView,
-                            sectionForSectionIndexTitle title: String, at index: Int) -> Int // tell table which section corresponds to section title/index (e.g. "B",1))
-    @objc
-    optional func tableView(_ tableView: AnimatedTableView,
-                            commit editingStyle: AnimatedTableViewCell.EditingStyle,
-                            forRowAt indexPath: IndexPath)
-    
-    @objc
-    optional func tableView(_ tableView: AnimatedTableView,
-                            moveRowAt sourceIndexPath: IndexPath,
-                            to destinationIndexPath: IndexPath)
-}
-
-@objc public protocol AnimatedTableViewDelegate {
-    
-    @objc
-    optional func tableView(_ tableView: AnimatedTableView,
-                                  willDisplay cell: UITableViewCell,
-                                  forRowAt indexPath: IndexPath)
-    
-    @objc
-    optional func tableView(_ tableView: AnimatedTableView, willDisplayHeaderView view: UIView, forSection section: Int)
-    
-    @objc
-    optional func tableView(_ tableView: AnimatedTableView, willDisplayFooterView view: UIView, forSection section: Int)
-    
-    @objc
-    optional func tableView(_ tableView: AnimatedTableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath)
-    
-    @objc
-    optional func tableView(_ tableView: AnimatedTableView, didEndDisplayingHeaderView view: UIView, forSection section: Int)
-    
-    @objc
-    optional func tableView(_ tableView: AnimatedTableView, didEndDisplayingFooterView view: UIView, forSection section: Int)
-    
-    @objc
-    optional func tableView(_ tableView: AnimatedTableView, heightForRowAt indexPath: IndexPath) -> CGFloat
-    
-    @objc
-    optional func tableView(_ tableView: AnimatedTableView, heightForHeaderInSection section: Int) -> CGFloat
-    
-    @objc
-    optional func tableView(_ tableView: AnimatedTableView, heightForFooterInSection section: Int) -> CGFloat
-    
-    @objc
-    optional func tableView(_ tableView: AnimatedTableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat
-    
-    @objc
-    optional func tableView(_ tableView: AnimatedTableView, estimatedHeightForHeaderInSection section: Int) -> CGFloat
-    
-    @objc
-    optional func tableView(_ tableView: AnimatedTableView, estimatedHeightForFooterInSection section: Int) -> CGFloat
-    
-    @objc
-    optional func tableView(_ tableView: AnimatedTableView, viewForHeaderInSection section: Int) -> UIView?
-    
-    @objc
-    optional func tableView(_ tableView: AnimatedTableView, viewForFooterInSection section: Int) -> UIView?
-    
-    @objc
-    optional func tableView(_ tableView: AnimatedTableView, accessoryButtonTappedForRowWith indexPath: IndexPath)
-    
-    @objc
-    optional func tableView(_ tableView: AnimatedTableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool
-    
-    @objc
-    optional func tableView(_ tableView: AnimatedTableView, didHighlightRowAt indexPath: IndexPath)
-    
-    @objc
-    optional func tableView(_ tableView: AnimatedTableView, didUnhighlightRowAt indexPath: IndexPath)
-    
-    @objc
-    optional func tableView(_ tableView: AnimatedTableView, willSelectRowAt indexPath: IndexPath) -> IndexPath?
-    
-    @objc
-    optional func tableView(_ tableView: AnimatedTableView, willDeselectRowAt indexPath: IndexPath) -> IndexPath?
-    
-    @objc
-    optional func tableView(_ tableView: AnimatedTableView, didSelectRowAt indexPath: IndexPath)
-    
-    @objc
-    optional func tableView(_ tableView: AnimatedTableView, didDeselectRowAt indexPath: IndexPath)
-    
-    @objc
-    optional func tableView(_ tableView: AnimatedTableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle
-    
-    @objc
-    optional func tableView(_ tableView: AnimatedTableView, titleForDeleteConfirmationButtonForRowAt indexPath: IndexPath) -> String?
-    
-    @objc
-    optional func tableView(_ tableView: AnimatedTableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]?
-    
-    @objc
-    optional func tableView(_ tableView: AnimatedTableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration?
-    
-    @objc
-    optional func tableView(_ tableView: AnimatedTableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration?
-    
-    @objc
-    optional func tableView(_ tableView: AnimatedTableView, shouldIndentWhileEditingRowAt indexPath: IndexPath) -> Bool
-    
-    @objc
-    optional func tableView(_ tableView: AnimatedTableView, willBeginEditingRowAt indexPath: IndexPath)
-    
-    @objc
-    optional func tableView(_ tableView: AnimatedTableView, didEndEditingRowAt indexPath: IndexPath?)
-    
-    @objc
-    optional func tableView(_ tableView: AnimatedTableView, targetIndexPathForMoveFromRowAt sourceIndexPath: IndexPath, toProposedIndexPath proposedDestinationIndexPath: IndexPath) -> IndexPath
-    
-    @objc
-    optional func tableView(_ tableView: AnimatedTableView, indentationLevelForRowAt indexPath: IndexPath) -> Int
-    
-    @objc
-    optional func tableView(_ tableView: AnimatedTableView, shouldShowMenuForRowAt indexPath: IndexPath) -> Bool
-    
-    @objc
-    optional func tableView(_ tableView: AnimatedTableView, canPerformAction action: Selector, forRowAt indexPath: IndexPath, withSender sender: Any?) -> Bool
-    
-    @objc
-    optional func tableView(_ tableView: AnimatedTableView, performAction action: Selector, forRowAt indexPath: IndexPath, withSender sender: Any?)
-    
-    @objc
-    optional func tableView(_ tableView: AnimatedTableView, canFocusRowAt indexPath: IndexPath) -> Bool
-    
-    @objc
-    optional func tableView(_ tableView: AnimatedTableView, shouldUpdateFocusIn context: UITableViewFocusUpdateContext) -> Bool
-    
-    @objc
-    optional func tableView(_ tableView: AnimatedTableView, didUpdateFocusIn context: UITableViewFocusUpdateContext, with coordinator: UIFocusAnimationCoordinator)
-    
-    @objc
-    optional func indexPathForPreferredFocusedView(in tableView: AnimatedTableView) -> IndexPath?
-    
-    @objc
-    optional func tableView(_ tableView: AnimatedTableView, shouldSpringLoadRowAt indexPath: IndexPath, with context: UISpringLoadedInteractionContext) -> Bool
-}
-
 open class AnimatedTableViewCell: UITableViewCell {
     
     public static let cellResuableIdentifier = "AnimatedTableViewCell"
@@ -198,14 +23,14 @@ open class AnimatedTableView: UIView {
     
     fileprivate var tableView: UITableView!
     
-    var customAnimationBlock: AnimatedTableViewAnimationBlock?
+    public var customAnimationBlock: AnimatedTableViewAnimationBlock?
     
-    public var tableViewBackgroundColor: UIColor? {
-        get {
-            return tableView.backgroundColor
-        }
+    open override var backgroundColor: UIColor? {
         set {
             tableView.backgroundColor = newValue
+        }
+        get {
+            return tableView.backgroundColor
         }
     }
     
@@ -215,16 +40,15 @@ open class AnimatedTableView: UIView {
                 customAnimationBlock: AnimatedTableViewAnimationBlock? = nil) {
         
         super.init(frame: frame)
-//        self.backgroundColor = .clear
         
-        tableView = UITableView(frame: frame, style: style)
+        tableView = UITableView(frame: .zero, style: style)
         tableView.delegate = self
         tableView.dataSource = self
         tableView?.register(
             AnimatedTableViewCell.self,
             forCellReuseIdentifier: AnimatedTableViewCell.cellResuableIdentifier
         )
-        
+        tableView.backgroundColor = .lightGray
         self.customAnimationBlock = customAnimationBlock
         
         if aninmationStyle == .custom {
@@ -235,6 +59,48 @@ open class AnimatedTableView: UIView {
         
         self.aninmationStyle = aninmationStyle
         self.addSubview(tableView)
+        self.translatesAutoresizingMaskIntoConstraints = false
+        self.tableView.translatesAutoresizingMaskIntoConstraints = false
+       
+        
+        let widthConstraint = NSLayoutConstraint(item: self,
+                                                 attribute: .width,
+                                                 relatedBy: .equal,
+                                                 toItem: tableView,
+                                                 attribute: .width,
+                                                 multiplier: 1.0,
+                                                 constant: 0.0)
+
+        let heightConstraint = NSLayoutConstraint(item: self,
+                                                  attribute: .height,
+                                                  relatedBy: .equal,
+                                                  toItem: tableView,
+                                                  attribute: .height,
+                                                  multiplier: 1.0,
+                                                  constant: 0.0)
+
+        let centerXtConstraint = NSLayoutConstraint(item: self,
+                                                    attribute: .centerX,
+                                                    relatedBy: .equal,
+                                                    toItem: tableView,
+                                                    attribute: .centerX,
+                                                    multiplier: 1.0,
+                                                    constant: 0.0)
+
+        let centerYtConstraint = NSLayoutConstraint(item: self,
+                                                    attribute: .centerY,
+                                                    relatedBy: .equal,
+                                                    toItem: tableView,
+                                                    attribute: .centerY,
+                                                    multiplier: 1.0,
+                                                    constant: 0.0)
+        self.addConstraints([
+            widthConstraint,
+            heightConstraint,
+            centerXtConstraint,
+            centerYtConstraint
+        ])
+
         
     }
     
@@ -275,7 +141,7 @@ open class AnimatedTableView: UIView {
     }
     
     public func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        preDelegate?.scrollViewDidScroll?(scrollView)
+        delegate?.scrollViewDidScroll?(scrollView)
         
     }
     
@@ -285,7 +151,7 @@ open class AnimatedTableView: UIView {
     
 }
 
-fileprivate typealias __TableViewDataSource__ = AnimatedTableView
+private typealias __TableViewDataSource__ = AnimatedTableView
 extension __TableViewDataSource__: UITableViewDataSource {
     
     public func tableView(_ tableView: UITableView,
@@ -372,10 +238,9 @@ extension __TableViewDataSource__: UITableViewDataSource {
                                to: destinationIndexPath)
     }
     
-    
 }
 
-fileprivate typealias __TableViewDelegate__ = AnimatedTableView
+private typealias __TableViewDelegate__ = AnimatedTableView
 extension __TableViewDelegate__: UITableViewDelegate {
     
     public func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
@@ -597,17 +462,20 @@ extension __TableViewDelegate__: UITableViewDelegate {
         let normalizedSpeed = CGFloat.maximum(-1.0, CGFloat.maximum(1.0, speed/2.0))
         
         DispatchQueue.main.async {
-            let animationDuration = tableViewCellAnimationBlock(cell.layer, normalizedSpeed)
-            //            UIView.beginAnimations(nil, context: nil)
-            //            UIView.setAnimationDuration(TimeInterval(animationDuration))
-            //            cell.layer.transform = CATransform3DIdentity
-            //            cell.layer.opacity = 1.0
-            //            UIView.commitAnimations()
-            UIView.animate(withDuration: TimeInterval(animationDuration),
-                           animations: {
-                            cell.layer.transform = CATransform3DIdentity
-                            cell.layer.opacity = 1.0
-                           }, completion: nil)
+            let animationDuration =
+                tableViewCellAnimationBlock(
+                    cell.layer,
+                    normalizedSpeed
+                )
+            
+            UIView.animate(
+                withDuration: TimeInterval(animationDuration),
+                animations: {
+                                cell.layer.transform = CATransform3DIdentity
+                                cell.layer.opacity = 1.0
+                },
+                completion: nil
+            )
         }
         
     }

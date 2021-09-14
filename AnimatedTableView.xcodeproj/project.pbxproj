@@ -3,12 +3,14 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		1F0FC4B7240B9D9200E16908 /* AnimatedTableView.h in Headers */ = {isa = PBXBuildFile; fileRef = 1F0FC4B5240B9D9200E16908 /* AnimatedTableView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		1F0FC4BE240B9DDD00E16908 /* AnimatedTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F0FC4BD240B9DDD00E16908 /* AnimatedTableView.swift */; };
+		1F45C0CC26F03DBA007F794E /* AnimatedTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F45C0CB26F03DBA007F794E /* AnimatedTableViewDataSource.swift */; };
+		1F45C0D226F03DE9007F794E /* AnimatedTableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F45C0D126F03DE9007F794E /* AnimatedTableViewDelegate.swift */; };
 		1FA876E12419124500073219 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA876E02419124500073219 /* AppDelegate.swift */; };
 		1FA876E32419124500073219 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA876E22419124500073219 /* SceneDelegate.swift */; };
 		1FA876E52419124500073219 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA876E42419124500073219 /* ViewController.swift */; };
@@ -51,6 +53,8 @@
 		1F0FC4B5240B9D9200E16908 /* AnimatedTableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AnimatedTableView.h; sourceTree = "<group>"; };
 		1F0FC4B6240B9D9200E16908 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1F0FC4BD240B9DDD00E16908 /* AnimatedTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatedTableView.swift; sourceTree = "<group>"; };
+		1F45C0CB26F03DBA007F794E /* AnimatedTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatedTableViewDataSource.swift; sourceTree = "<group>"; };
+		1F45C0D126F03DE9007F794E /* AnimatedTableViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatedTableViewDelegate.swift; sourceTree = "<group>"; };
 		1FA876DE2419124500073219 /* AnimatedTableViewDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AnimatedTableViewDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1FA876E02419124500073219 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1FA876E22419124500073219 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -111,6 +115,8 @@
 			children = (
 				1F0FC4B5240B9D9200E16908 /* AnimatedTableView.h */,
 				1F0FC4BD240B9DDD00E16908 /* AnimatedTableView.swift */,
+				1F45C0CB26F03DBA007F794E /* AnimatedTableViewDataSource.swift */,
+				1F45C0D126F03DE9007F794E /* AnimatedTableViewDelegate.swift */,
 				1F0FC4B6240B9D9200E16908 /* Info.plist */,
 			);
 			path = AnimatedTableView;
@@ -192,6 +198,7 @@
 				1FA876DB2419124500073219 /* Frameworks */,
 				1FA876DC2419124500073219 /* Resources */,
 				1FA876F5241915C700073219 /* CopyFiles */,
+				B300AF2548447CE7187D6394 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -306,6 +313,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		B300AF2548447CE7187D6394 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-AnimatedTableViewDemo/Pods-AnimatedTableViewDemo-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-AnimatedTableViewDemo/Pods-AnimatedTableViewDemo-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-AnimatedTableViewDemo/Pods-AnimatedTableViewDemo-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -313,7 +337,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1F45C0D226F03DE9007F794E /* AnimatedTableViewDelegate.swift in Sources */,
 				1F0FC4BE240B9DDD00E16908 /* AnimatedTableView.swift in Sources */,
+				1F45C0CC26F03DBA007F794E /* AnimatedTableViewDataSource.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -415,6 +441,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
@@ -471,6 +498,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
