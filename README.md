@@ -2,9 +2,7 @@
 	
 	AnimatedTableView is a drop-in class of UIView,
 	which lets you add custom animations to any UITableView.
-	
 
-<br/>
 ![Demo](./Docs/demo.gif)
 
 # How to use
