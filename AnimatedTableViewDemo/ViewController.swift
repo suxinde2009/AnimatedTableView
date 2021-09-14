@@ -6,6 +6,30 @@
 //  Copyright © 2020 su xinde. All rights reserved.
 //
 
+/*
+ MIT License
+ 
+ Copyright (c) 2011-Present __承_影__
+ 
+ Permission is hereby granted, free of charge, to any person obtaining a copy
+ of this software and associated documentation files (the "Software"), to deal
+ in the Software without restriction, including without limitation the rights
+ to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ copies of the Software, and to permit persons to whom the Software is
+ furnished to do so, subject to the following conditions:
+ 
+ The above copyright notice and this permission notice shall be included in all
+ copies or substantial portions of the Software.
+ 
+ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ SOFTWARE.
+ */
+
 import UIKit
 import AnimatedTableView
 import SnapKit
@@ -15,7 +39,7 @@ class ViewController: UIViewController {
     lazy var tableView: AnimatedTableView = {
         let view = AnimatedTableView(
             frame: self.view.bounds,
-            aninmationStyle: .tilt //.custom // .wave // .flip // .helix //.fan // .fade //.curl
+            aninmationStyle: .curl
         )
         return view
     }()
@@ -85,17 +109,17 @@ class ViewController: UIViewController {
             self?.updateTitle()
         }
         
-        let action6 = UIAlertAction(title: "tilt", style: .default) {[weak self] (_) in
+        let action6 = UIAlertAction(title: "Tilt", style: .default) {[weak self] (_) in
             self?.tableView.aninmationStyle = .tilt
             self?.updateTitle()
         }
         
-        let action7 = UIAlertAction(title: "wave", style: .default) {[weak self] (_) in
+        let action7 = UIAlertAction(title: "Wave", style: .default) {[weak self] (_) in
             self?.tableView.aninmationStyle = .wave
             self?.updateTitle()
         }
         
-        let action8 = UIAlertAction(title: "custom", style: .default) {[weak self] (_) in
+        let action8 = UIAlertAction(title: "Custom", style: .default) {[weak self] (_) in
             self?.tableView.aninmationStyle = .custom
             self?.tableView.customAnimationBlock = {(layer, speed) in
                 
@@ -157,9 +181,9 @@ class ViewController: UIViewController {
             case .helix:
                 self.title = "Helix"
             case .tilt:
-                self.title = "tilt"
+                self.title = "Tilt"
             case .wave:
-                self.title = "wave"
+                self.title = "Wave"
             case .custom:
                 self.title = "Custom"
             case .none:
@@ -181,17 +205,28 @@ extension __Delegate__: AnimatedTableViewDataSource, AnimatedTableViewDelegate {
     }
     
     func tableView(_ tableView: AnimatedTableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 44.0
+        return 50.0
     }
     
     func tableView(_ tableView: AnimatedTableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.textLabel?.text = objects[indexPath.row]
+        
+        cell.backgroundView = UIView(frame: .zero)
+        cell.backgroundView?.snp.makeConstraints({ (make) in
+            make.bottom.top.left.right.equalTo(cell)
+        })
+        
         return cell
     }
     
     func tableView(_ tableView: AnimatedTableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        let color = UIColor(white: 0.9, alpha: 1.0)
+        cell.backgroundView?.backgroundColor = (indexPath.row % 2 == 0 ? .white : color)
         
+        cell.textLabel?.text = objects[indexPath.row]
+        cell.textLabel?.textColor = .black
     }
     
 }
+
+

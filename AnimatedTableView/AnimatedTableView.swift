@@ -6,6 +6,30 @@
 //  Copyright © 2020 su xinde. All rights reserved.
 //
 
+/*
+ MIT License
+ 
+ Copyright (c) 2011-Present __承_影__
+ 
+ Permission is hereby granted, free of charge, to any person obtaining a copy
+ of this software and associated documentation files (the "Software"), to deal
+ in the Software without restriction, including without limitation the rights
+ to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ copies of the Software, and to permit persons to whom the Software is
+ furnished to do so, subject to the following conditions:
+ 
+ The above copyright notice and this permission notice shall be included in all
+ copies or substantial portions of the Software.
+ 
+ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ SOFTWARE.
+ */
+
 import Foundation
 import UIKit
 import CoreGraphics
@@ -358,11 +382,13 @@ extension __TableViewDelegate__: UITableViewDelegate {
     }
     
     
+    @available(iOS 11.0, *)
     public func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         return delegate?.tableView?(self, leadingSwipeActionsConfigurationForRowAt: indexPath)
     }
     
     
+    @available(iOS 11.0, *)
     public func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         return delegate?.tableView?(self, trailingSwipeActionsConfigurationForRowAt: indexPath)
     }
@@ -424,6 +450,7 @@ extension __TableViewDelegate__: UITableViewDelegate {
     }
     
     
+    @available(iOS 11.0, *)
     public func tableView(_ tableView: UITableView, shouldSpringLoadRowAt indexPath: IndexPath, with context: UISpringLoadedInteractionContext) -> Bool {
         delegate?.tableView?(self,
                              shouldSpringLoadRowAt: indexPath,
@@ -484,7 +511,7 @@ extension __TableViewDelegate__: UITableViewDelegate {
 }
 
 @objc public class AnimatedTableViewDuration: NSObject {
-    public static let `default`: CGFloat = 0.2
+    public static let `default`: CGFloat = 0.3
     public static let zero: CGFloat = 0.0
 }
     
@@ -526,7 +553,7 @@ extension __TableViewDelegate__: UITableViewDelegate {
                     if speed != 0.0 {
                         layer.opacity = 1.0 - fabsf(Float(speed))
                     }
-                    return 2 * AnimatedTableViewDuration.default
+                    return 2.0 * AnimatedTableViewDuration.default
                 }
                 return block
             case .fan:
