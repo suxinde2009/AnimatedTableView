@@ -9,6 +9,12 @@
 
    Check out the `AnimationTableViewDemo` target of `AnimatedTableView.xcworkspace`.
 
+
+# Todos
+
+- [x] Framwork project.
+- [ ] cocoapods support
+
 # License
 
 This widget is under 'MIT' licence, check out the [LICENSE](./LICENSE.md) file for detail.
