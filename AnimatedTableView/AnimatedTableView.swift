@@ -86,45 +86,23 @@ open class AnimatedTableView: UIView {
         self.translatesAutoresizingMaskIntoConstraints = false
         self.tableView.translatesAutoresizingMaskIntoConstraints = false
        
+        let verticalConstraints =
+            NSLayoutConstraint.constraints(
+                withVisualFormat: "V:|-[tableView]-|",
+                options: NSLayoutConstraint.FormatOptions(),
+                metrics: nil,
+                views: ["tableView" : tableView!]
+            )
         
-        let widthConstraint = NSLayoutConstraint(item: self,
-                                                 attribute: .width,
-                                                 relatedBy: .equal,
-                                                 toItem: tableView,
-                                                 attribute: .width,
-                                                 multiplier: 1.0,
-                                                 constant: 0.0)
-
-        let heightConstraint = NSLayoutConstraint(item: self,
-                                                  attribute: .height,
-                                                  relatedBy: .equal,
-                                                  toItem: tableView,
-                                                  attribute: .height,
-                                                  multiplier: 1.0,
-                                                  constant: 0.0)
-
-        let centerXtConstraint = NSLayoutConstraint(item: self,
-                                                    attribute: .centerX,
-                                                    relatedBy: .equal,
-                                                    toItem: tableView,
-                                                    attribute: .centerX,
-                                                    multiplier: 1.0,
-                                                    constant: 0.0)
-
-        let centerYtConstraint = NSLayoutConstraint(item: self,
-                                                    attribute: .centerY,
-                                                    relatedBy: .equal,
-                                                    toItem: tableView,
-                                                    attribute: .centerY,
-                                                    multiplier: 1.0,
-                                                    constant: 0.0)
-        self.addConstraints([
-            widthConstraint,
-            heightConstraint,
-            centerXtConstraint,
-            centerYtConstraint
-        ])
-
+        let horizonalConstraints =
+            NSLayoutConstraint.constraints(
+                withVisualFormat: "H:|-[tableView]-|",
+                options: NSLayoutConstraint.FormatOptions(),
+                metrics: nil,
+                views: ["tableView" : tableView!]
+            )
+        self.addConstraints(verticalConstraints)
+        self.addConstraints(horizonalConstraints)
         
     }
     
